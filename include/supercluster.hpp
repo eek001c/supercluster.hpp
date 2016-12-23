@@ -125,6 +125,9 @@ public:
             if (c.num_points == 1) {
                 feature.properties = this->features[c.id].properties;
             } else {
+                // Inherit properties from previous starting cluster/point
+                feature.properties = this->features[c.id].properties;
+
                 feature.properties["cluster"] = true;
                 feature.properties["point_count"] = static_cast<std::uint64_t>(c.num_points);
             }
